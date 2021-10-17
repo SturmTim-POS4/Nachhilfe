@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nachhilfe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="350" Width="525"
+        Loaded="MainWindow_OnLoaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Load" Click="LoadServices"/>
+                <MenuItem Header="Save" Click="SaveServices"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar Name="ToolBar" DockPanel.Dock="Top">
+            <ComboBox Name="StudentBox" Width="300" SelectionChanged="StudentBox_OnSelectionChanged"></ComboBox>
+        </ToolBar>
+        <Label Name="StudentName" HorizontalContentAlignment="Center" FontSize="20" Margin="0,5,0,5" Background="LightBlue" DockPanel.Dock="Top"></Label>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Margin="5" Grid.Column="0" Grid.Row="0"  Header="Schulstufe">
+                <StackPanel Name="SchoolLevels"></StackPanel>
+            </GroupBox>
+            <GroupBox Margin="5" Grid.Column="0"  Grid.Row="1"  Header="Gegenstand">
+                <StackPanel Name="Subjects"></StackPanel>
+            </GroupBox>
+            <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Margin="5" Grid.Row="0" HorizontalAlignment="Center" Content="Add" Click="ButtonBase_OnClick"></Button>
+                <Label Name="TutoringCount" Margin="5" Grid.Row="1" Content="Seas"></Label>
+                <ListBox Name="Tutorings" Margin="20,5,5,5" Grid.Row="2" ></ListBox>
+            </Grid>
+            <Image Name="StudentImage" Source="" Margin="5" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"></Image>
+        </Grid>
+    </DockPanel>
 </Window>
